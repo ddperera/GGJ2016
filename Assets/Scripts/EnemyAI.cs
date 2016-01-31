@@ -58,7 +58,7 @@ public class EnemyAI : MonoBehaviour {
 
 		if (Vector3.SqrMagnitude (vecToPlayer) < 2 && enemyVision.canSeePlayer)
 		{
-			gameManager.EndGame ();
+			player.GetComponent<Movement>().TakeDamage ();
 		}
 	}
 
