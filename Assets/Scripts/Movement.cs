@@ -50,6 +50,17 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		//mouse click
+		if (Input.GetButtonDown("Fire1") && curState == state.WALKING)
+		{
+			RaycastHit hitInfo = new RaycastHit();
+			if (Physics.Raycast(camera.ViewportPointToRay(new Vector3(.5f,.5f,0f)), out hitInfo, 2.5f)){
+				if (hitInfo.collider.gameObject.CompareTag("Interactable")){
+					hitInfo.collider.gameObject.SendMessage("OnPlayerClicked",SendMessageOptions.DontRequireReceiver);
+				}
+			}
+		}
+
 		camera.transform.localRotation = Quaternion.Euler (camera.transform.localRotation.eulerAngles.x, 0, 0);
 		if (curState == state.WALKING)
 		{
