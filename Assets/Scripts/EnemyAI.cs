@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour {
 	private GameObject player;
 	private float endChaseTimer;
 	private float patrolTimer;
-	private int waypointIndex;
+	private int waypointIndex = 0;
 
 	void Awake()
 	{
